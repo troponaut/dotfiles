@@ -7,7 +7,7 @@ if ! command_exists "op"; then
 fi
 
 # Symlink agent.sock for convenient access
-ln -s "${HOME}/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock" "${XDG_CONFIG_HOME}/op/agent.sock"
+ln -sf "${HOME}/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock" "${XDG_CONFIG_HOME}/op/agent.sock"
 
 # Initial plugins
 if [ -f "${XDG_CONFIG_HOME}/op/plugins.sh" ]; then

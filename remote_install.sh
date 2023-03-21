@@ -62,7 +62,13 @@ install_prerequisites() {
   case ${os_family} in
     "macos")
       if [[ ! -d "$(xcode-select -p)" ]]; then
-        xcode-select --install
+        # Install XCode Command Line Tools.
+        xcode-select --install &> /dev/null
+
+        # Wait until XCode Command Line Tools installation has finished.
+        until eval "$(xcode-select --print-path &> /dev/null)"; do
+          sleep 5;
+        done
       fi
       ;;
     "debian")
@@ -254,7 +260,7 @@ cat << "EOF"
 
 dotfiles for macOS & Linux
 
--------------------------------------------------- 
+-------------------------------------------------- ∏
 EOF
 
   printf "  %b Dotfiles target directory: ${BOLD}${DOTFILES_DIR}${REGULAR} \\n" "${TICK}"

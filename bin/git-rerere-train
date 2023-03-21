@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Summary:
+#   Runs the git contrib rerere_train.sh script
+#
+# Usage:
+#   git rerere-train
+
+"$(git install-path)"/share/git-core/contrib/rerere-train.sh "$*"

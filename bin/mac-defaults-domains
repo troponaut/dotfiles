@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Summary:
+#   Pretty prints the macos defaults domains
+#
+# Usage:
+#   mac-defaults-domains
+#   mac-defaults-domains | grep com.apple
+
+defaults domains | awk '{gsub(", ", "\n", $0)}1' | sort

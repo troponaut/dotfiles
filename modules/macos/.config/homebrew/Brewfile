@@ -1,0 +1,119 @@
+#!/usr/bin/env ruby
+#
+# Homebrew Bundle file
+# - https://github.com/Homebrew/homebrew-bundle
+#
+
+## Shells
+
+# Bash
+# brew 'bash'
+# brew 'bash-completion@2'
+
+# Zsh
+# brew 'zsh'
+# brew 'zsh-autosuggestions'
+# brew 'zsh-completions'
+# brew 'zsh-history-substring-search'
+# brew 'zsh-syntax-highlighting'
+
+# pre-reg
+# stow git make zsh
+
+#
+# Local Brewfile's
+#
+
+Dir.glob(File.expand_path('~/.config/homebrew/Brewfile.*')).each do |file|
+  next if file.end_with?('.lock.json')
+  instance_eval File.read(file) if File.exists?(file)
+end
+
+#
+# Only macOS beyond here
+#
+
+require 'os'
+return unless OS.mac?
+
+
+## Taps
+tap "homebrew/core"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "buo/cask-upgrade"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-fonts"
+
+## Packages
+
+brew "bat"
+brew "coreutils"
+brew "ripgrep"
+brew "neovim"
+brew "diff-so-fancy"
+brew "direnv"
+brew "exa"
+brew "fzf"
+brew "git"
+brew "git-extras"
+brew "helix"
+brew "hub"
+brew "gh"
+brew "htop"
+brew "jq"
+brew "mas"
+brew "starship"
+brew "thefuck"
+brew "trash"
+brew "tldr"
+brew "tree"
+brew "wget"
+brew "yq"
+brew "zoxide"
+
+
+## Fonts
+cask "font-hack-nerd-font"
+
+## Casks
+cask "1password"
+cask "1password-cli"
+cask "appcleaner"
+cask "bartender"
+cask "bettermouse"
+cask "cakebrew"
+cask "dash"
+cask "discord"
+cask "fantastical"
+cask "fmail2"
+cask "hazel"
+cask "home-assistant"
+cask "keka"
+cask "little-snitch"
+cask "notion"
+cask "prefs-editor"
+cask "qlcolorcode", args: { appdir: "/Applications" }
+cask "qlimagesize", args: { appdir: "/Applications" }
+cask "qlmarkdown", args: { appdir: "/Applications" }
+cask "qlstephen", args: { appdir: "/Applications" }
+cask "quicklook-csv", args: { appdir: "/Applications" }
+cask "quicklook-json", args: { appdir: "/Applications" }
+cask "sonos"
+cask "spotify"
+cask "suspicious-package"
+cask "todoist"
+cask "utm"
+cask "visual-studio-code"
+cask "warp"
+cask "zoom"
+
+## Mac App Store
+mas "1Password for Safari", id: 1569813296
+mas "Airmail", id: 918858936
+mas "Amphetamine", id: 937984704
+mas "Magnet", id: 441258766
+mas "Menu Bar Controller for Sonos", id: 1357379892
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Reeder", id: 1529448980
+mas "Screens", id: 1224268771

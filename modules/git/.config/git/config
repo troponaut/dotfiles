@@ -13,7 +13,7 @@
 	trustctime = false
 	autocrlf = input
 	untrackedCache = true
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
 	ignorecase = false
 
 [init]
@@ -68,23 +68,46 @@
 	sts = status -sb
 	unstage = reset --hard HEAD
 
+[interactive]
+    diffFilter = delta --color-only
+
 [color]
-	ui = auto
+	ui = true
 [color "branch"]
 	current = yellow reverse
 	local = yellow
 	remote = green
-[color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+
 [color "status"]
 	added = yellow
 	changed = green
 	untracked = cyan
+
+
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[diff-so-fancy]
+	first-run = false
+
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+

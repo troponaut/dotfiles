@@ -50,12 +50,18 @@ unset SHELL_TYPE
 # Default options
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --inline-info --preview 'preview {} | head -n 500'"
 
-# Use ripgrep
-export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --no-messages"
+# Use ripgrep and Keybindings
 
-# Keybindings
-export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
-export FZF_ALT_C_COMMAND="rg-dirs"
+# export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --no-messages"
+# export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+# export FZF_ALT_C_COMMAND="rg-dirs"
+
+# Use fd and Keybindings
+export FZF_DEFAULT_COMMAND="fd . $HOME"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+
+
 # export FZF_CTRL_T_OPTS=""
 # export FZF_CTRL_R_OPTS=""
 

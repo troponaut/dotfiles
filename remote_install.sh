@@ -34,7 +34,7 @@ OVER="\\r\\033[K"
 
 # Override arguments or use
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.dotfiles}"
-DOTFILES_INSTALL_USE_SUDO="${DOTFILES_INSTALL_USE_SUDO:-0}"
+DOTFILES_INSTALL_USE_SUDO="${DOTFILES_INSTALL_USE_SUDO:-1}"
 
 get_os_family() {
   # ideally we would use an associative array here
@@ -155,7 +155,7 @@ install_brewfile(){
     printf "Do you want run brew bundle [y/N]? "
     read -r answer
     case "${answer}" in [yY] | [yY][eE][sS])
-      brewfile="${DOTFILES_DIR}/modules/macos/.config/homebrew/Brewfile"
+      brewfile="${DOTFILES_DIR}/modules/homebrew/.config/homebrew/Brewfile"
       HOMEBREW_BUNDLE_FILE="$brewfile" brew bundle
       ;;
     esac
@@ -198,8 +198,6 @@ install_zsh_plugins() {
       # TODO: Fix zsh-completions & zsh-history-substring-search on debian error even after registering
       plugins=("zsh-syntax-highlighting zsh-autosuggestions")
       ;;
-    "brew") ## included in Brefile
-      return 0 ;;
     *) ;;
   esac
 

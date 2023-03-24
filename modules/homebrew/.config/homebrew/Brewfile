@@ -17,8 +17,17 @@
 # brew 'zsh-history-substring-search'
 # brew 'zsh-syntax-highlighting'
 
-# pre-reg
+# pre-req
 # stow git make zsh
+
+## Taps
+tap "buo/cask-upgrade"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+
 
 #
 # Local Brewfile's
@@ -36,63 +45,76 @@ end
 require 'os'
 return unless OS.mac?
 
-
-## Taps
-tap "homebrew/core"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "buo/cask-upgrade"
-tap "homebrew/cask-drivers"
-tap "homebrew/cask-fonts"
-
 ## Packages
 
+brew "ack"
 brew "bat"
+brew "cheat"
 brew "coreutils"
-brew "ripgrep"
-brew "neovim"
+brew "ctop"
+brew "git-delta"
 brew "diff-so-fancy"
+brew "difftastic"
 brew "direnv"
+brew "dog"
+brew "duf"
+brew "dust"
 brew "exa"
+brew "fd"
 brew "fzf"
+brew "gh"
 brew "git"
 brew "git-extras"
+brew "gping"
 brew "helix"
-brew "hub"
-brew "gh"
 brew "htop"
+brew "hub"
 brew "jq"
+brew "m-cli"
 brew "mas"
+brew "neovim"
+brew "prettyping"
+brew "procs"
+brew "ripgrep"
 brew "starship"
+brew "stow"
 brew "thefuck"
-brew "trash"
+brew "tig"
 brew "tldr"
+brew "trash"
 brew "tree"
 brew "wget"
 brew "yq"
 brew "zoxide"
-
+brew "zsh"
 
 ## Fonts
 cask "font-hack-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 
 ## Casks
 cask "1password"
 cask "1password-cli"
 cask "appcleaner"
+cask "barrier"
 cask "bartender"
+cask "betterdisplay"
 cask "bettermouse"
 cask "cakebrew"
 cask "dash"
 cask "discord"
 cask "fantastical"
 cask "fmail2"
+cask "font-hack-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 cask "hazel"
 cask "home-assistant"
 cask "keka"
 cask "little-snitch"
 cask "notion"
 cask "prefs-editor"
+cask "prusaslicer"
+cask "sourcetree"
 cask "qlcolorcode", args: { appdir: "/Applications" }
 cask "qlimagesize", args: { appdir: "/Applications" }
 cask "qlmarkdown", args: { appdir: "/Applications" }
@@ -108,6 +130,7 @@ cask "visual-studio-code"
 cask "warp"
 cask "zoom"
 
+
 ## Mac App Store
 mas "1Password for Safari", id: 1569813296
 mas "Airmail", id: 918858936
@@ -117,3 +140,9 @@ mas "Menu Bar Controller for Sonos", id: 1357379892
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Reeder", id: 1529448980
 mas "Screens", id: 1224268771
+
+
+
+
+
+

@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/linux,macos,python,windows,homebrew,executable,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=linux,macos,python,windows,homebrew,executable,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/linux,macos,python,windows,homebrew,executable,visualstudiocode,zsh
+# Edit at https://www.toptal.com/developers/gitignore?templates=linux,macos,python,windows,homebrew,executable,visualstudiocode,zsh
 
 ### Executable ###
 *.app
@@ -15,7 +15,6 @@
 
 ### Homebrew ###
 Brewfile.lock.json
-Caskfile.lock.json
 
 ### Linux ###
 *~
@@ -82,6 +81,7 @@ dist/
 downloads/
 eggs/
 .eggs/
+lib/
 lib64/
 parts/
 sdist/
@@ -281,6 +281,34 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+### Zsh ###
+# Zsh compiled script + zrecompile backup
+*.zwc
+*.zwc.old
+
+# Zsh completion-optimization dumpfile
+*zcompdump*
+
+# Zsh zcalc history
+.zcalc_history
 .zsh_history
 
-# End of https://www.toptal.com/developers/gitignore/api/linux,macos,python,windows,homebrew,executable,visualstudiocode
+# A popular plugin manager's files
+._zinit
+.zinit_lstupd
+
+# zdharma/zshelldoc tool's files
+zsdoc/data
+
+# robbyrussell/oh-my-zsh/plugins/per-directory-history plugin's files
+# (when set-up to store the history in the local directory)
+.directory_history
+
+# MichaelAquilina/zsh-autoswitch-virtualenv plugin's files
+# (for Zsh plugins using Python)
+
+# Zunit tests' output
+/tests/_output/*
+!/tests/_output/.gitkeep
+
+# End of https://www.toptal.com/developers/gitignore/api/linux,macos,python,windows,homebrew,executable,visualstudiocode,zsh

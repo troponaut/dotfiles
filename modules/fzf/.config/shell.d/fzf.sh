@@ -61,7 +61,6 @@ export FZF_DEFAULT_COMMAND="fd . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 
-
 # export FZF_CTRL_T_OPTS=""
 # export FZF_CTRL_R_OPTS=""
 
@@ -102,9 +101,9 @@ _fzf_comprun() {
   shift
 
   case "$command" in
-    cd) fzf "$@" --preview 'tree -C {} | head -200' ;;
-    export | unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
-    ssh) fzf "$@" --preview 'dig {}' ;;
-    *) fzf "$@" ;;
+  cd) fzf "$@" --preview 'tree -C {} | head -200' ;;
+  export | unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
+  ssh) fzf "$@" --preview 'dig {}' ;;
+  *) fzf "$@" ;;
   esac
 }

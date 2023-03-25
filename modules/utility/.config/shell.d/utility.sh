@@ -6,8 +6,7 @@
 # General
 #
 
-# Reloads the current shell
-alias reload='exec $SHELL -l'
+# Reloads the current alias reload='exec $SHELL -l'
 
 # Clear the screen
 alias clr='clear'
@@ -35,7 +34,8 @@ alias lu='lt -u'       # Lists sorted by date, most recent last, shows access ti
 # Directory stack
 alias d='dirs -v'
 # Jump directly in whatever directory on the stack.
-for index ({1..9}) alias "$index"="cd +${index}"; unset index
+for index in {1..9}; do alias "$index"="cd +${index}"; done
+unset index
 
 # Find from relative pwd
 alias findhere='find . -name'

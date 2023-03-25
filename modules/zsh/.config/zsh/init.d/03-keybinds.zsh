@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #
 # ZSH Key Bindings
 #
@@ -9,8 +10,9 @@
 # Make sure that the terminal is in application mode when zle is active, since
 # only then values from $terminfo are valid
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+
   function zle-line-init() {
-    echoti smkx
+  echoti smkx
   }
   function zle-line-finish() {
     echoti rmkx

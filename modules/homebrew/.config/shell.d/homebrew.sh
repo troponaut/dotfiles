@@ -48,4 +48,3 @@ alias brewed='code $HOMEBREW_BUNDLE_FILE'
 # Composite aliases
 alias brew-upgrade='brew update && brew upgrade && brew bundle && brew cleanup'
 alias brewupg='brew-upgrade'
-

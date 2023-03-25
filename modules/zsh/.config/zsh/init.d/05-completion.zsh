@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 #
 # Zsh completions
 #
@@ -72,6 +73,7 @@ fi
 autoload -Uz compinit
 _zcompdump="${ZSH_COMPDUMP:-$XDG_CACHE_HOME/zsh/zcompdump}"
 _comp_files=(${_zcompdump}(Nm-20))
+
 if (($#_comp_files)); then
   compinit -i -C -d "$_zcompdump"
 else

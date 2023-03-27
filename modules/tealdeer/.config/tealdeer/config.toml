@@ -1,0 +1,25 @@
+[display]
+compact = false
+use_pager = true
+
+[style.command_name]
+foreground = "red"
+
+[style.example_text]
+foreground = "green"
+
+[style.example_code]
+foreground = "blue"
+
+[style.example_variable]
+foreground = "blue"
+underline = true
+
+[updates]
+auto_update = true
+
+[directories]
+# https://github.com/dbrgn/tealdeer/blob/94d56c01a787f574fc380c5fb9fcced767efccea/src/config.rs#L303
+# Cache location is now configured in this confi; env var TEALDEER_CACHE_DIR for backwards compatibility
+cache_dir = ".local/share/tealdeer/pages"
+custom_pages_dir = ".local/share/tealdeer/pages/custom-pages"

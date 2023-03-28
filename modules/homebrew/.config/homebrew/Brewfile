@@ -3,12 +3,12 @@
 # Homebrew Bundle file
 # - https://github.com/Homebrew/homebrew-bundle
 #
-œ
+
 # pre-req
 # stow git make zsh
 
 # Options
-cask_args appdir: '~/Applications', require_sha: true
+cask_args appdir: '/Applications'
 
 ## Taps
 tap "buo/cask-upgrade"
@@ -93,6 +93,7 @@ brew "zsh-syntax-highlighting"
 ## Casks
 cask "1password"
 cask "1password-cli"
+cask "aldente"
 cask "appcleaner"
 cask "barrier"
 cask "bartender"
@@ -101,6 +102,8 @@ cask "bettermouse"
 cask "cakebrew"
 cask "dash"
 cask "discord"
+cask "elgato-wave-link"
+cask "elgato-stream-deck"
 cask "fantastical"
 cask "fmail2"
 cask "font-hack-nerd-font"

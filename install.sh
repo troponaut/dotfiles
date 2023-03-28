@@ -225,8 +225,8 @@ setup_default_shells() {
 
   if [[ "${os_family}" == "macos" ]]; then
     # Add available shells
-    ! grep -q "${bash_path}" /etc/shells && echo "${bash_path}/bin/bash" | $sudo_cmd tee -a /etc/shells
-    ! grep -q "${zsh_path}" /etc/shells && echo "${zsh_path}/bin/zsh" | $sudo_cmd tee -a /etc/shells
+    ! grep -q "${bash_path}" /etc/shells && echo "${bash_path}" | $sudo_cmd tee -a /etc/shells
+    ! grep -q "${zsh_path}" /etc/shells && echo "${zsh_path}" | $sudo_cmd tee -a /etc/shells
   fi
 
   # Change default shell to zsh
@@ -310,8 +310,8 @@ main() {
   printf "  %b Installing Brefile: ${BOLD}${HOMEBREW_BUNDLE_FILE}${REGULAR} \\n" "${TICK}"
 
   # configure default shell
-  # printf  "  %b Setting default shell \\n" "${TICK}"
-  # setup_default_shells
+  printf  "  %b Setting default shell \\n" "${TICK}"
+  setup_default_shells
 
   printf "  %b Installing ZSH plugins \\n" "${TICK}"
   install_zsh_plugins
@@ -334,5 +334,6 @@ main() {
 }
 
 # Run the script
+
 main "$@"
 exit 0

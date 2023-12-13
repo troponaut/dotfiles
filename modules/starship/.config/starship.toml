@@ -1,4 +1,4 @@
-# Starship prompt config: https://starship.rs/config/
+# # Starship prompt config: https://starship.rs/config/
 
 scan_timeout = 30
 add_newline = true  # Inserts a blank line between shell prompts
@@ -15,200 +15,199 @@ style = "yellow"
 success_symbol = ""
 error_symbol = ""
 
-# ---
+# # ---
 
-# Shows an icon depending on what distro it is running on
-[env_var.STARSHIP_DISTRO]
-format = '[$env_value](bold white) '
-variable = "STARSHIP_DISTRO"
-disabled = false
+# # Shows an icon depending on what distro it is running on
+# [env_var.STARSHIP_DISTRO]
+# format = '[$env_value](bold white) '
+# variable = "STARSHIP_DISTRO"
+# disabled = false
 
-# Shows the current username
-[env_var.USER]
-format = '[$env_value](bold white) '
-variable = "USER"
-disabled = false
+# # Shows the current username
+# [env_var.USER]
+# format = '[$env_value](bold white) '
+# variable = "USER"
+# disabled = false
 
-# Shows an icon depending on what device it is running on
-[env_var.STARSHIP_DEVICE]
-format = 'on [$env_value](bold yellow)'
-variable = "STARSHIP_DEVICE"
-disabled = false
+# # Shows an icon depending on what device it is running on
+# [env_var.STARSHIP_DEVICE]
+# format = 'on [$env_value](bold yellow)'
+# variable = "STARSHIP_DEVICE"
+# disabled = false
 
-# ---
+# # ---
 
-# Shows the hostname
-[hostname]
-ssh_only = false
-format = "[$hostname](bold yellow) "
-disabled = false
+# # Shows the hostname
+# [hostname]
+# ssh_only = false
+# format = "[$hostname](bold yellow) "
+# disabled = false
 
-# Shows current directory
-[directory]
-truncation_length = 1
-truncation_symbol = "…/"
-home_symbol = " ~"
-read_only_style = "197"
-read_only = "  "
-format = "at [$path]($style)[$read_only]($read_only_style) "
+# # Shows current directory
+# [directory]
+# truncation_length = 1
+# truncation_symbol = "…/"
+# home_symbol = " ~"
+# read_only_style = "197"
+# read_only = "  "
+# format = "at [$path]($style)[$read_only]($read_only_style) "
 
-# Shows current git branch
-[git_branch]
-symbol = " "
-format = "via [$symbol$branch]($style) "
-# truncation_length = 4
-truncation_symbol = "…/"
-style = "bold green"
+# # Shows current git branch
+# [git_branch]
+# symbol = " "
+# format = "via [$symbol$branch]($style) "
+# # truncation_length = 4
+# truncation_symbol = "…/"
+# style = "bold green"
 
-# Shows current git status
-[git_status]
-format = '[\($all_status$ahead_behind\)]($style) '
-style = "bold green"
-conflicted = "🏳"
-up_to_date = " "
-untracked = " "
-ahead = "⇡${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-behind = "⇣${count}"
-stashed = " "
-modified = " "
-staged = '[++\($count\)](green)'
-renamed = "襁 "
-deleted = " "
+# # Shows current git status
+# [git_status]
+# format = '[\($all_status$ahead_behind\)]($style) '
+# style = "bold green"
+# conflicted = "🏳"
+# up_to_date = " "
+# untracked = " "
+# ahead = "⇡${count}"
+# diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+# behind = "⇣${count}"
+# stashed = " "
+# modified = " "
+# staged = '[++\($count\)](green)'
+# renamed = "襁 "
+# deleted = " "
 
-# Shows kubernetes context and namespace
-[kubernetes]
-format = 'via [ﴱ $context\($namespace\)](bold purple) '
-disabled = false
-
-
-[aws]
-symbol = "  "
-
-[buf]
-symbol = " "
-
-[c]
-symbol = " "
-
-[conda]
-symbol = " "
-
-[dart]
-symbol = " "
+# # Shows kubernetes context and namespace
+# [kubernetes]
+# format = 'via [ﴱ $context\($namespace\)](bold purple) '
+# disabled = false
 
 
+# [aws]
+# symbol = "  "
 
-[docker_context]
-symbol = " "
+# [buf]
+# symbol = " "
 
-[elixir]
-symbol = " "
+# [c]
+# symbol = " "
 
-[elm]
-symbol = " "
+# [conda]
+# symbol = " "
 
-[fossil_branch]
-symbol = " "
+# [dart]
+# symbol = " "
 
 
-[golang]
-symbol = " "
+# [docker_context]
+# symbol = " "
 
-[guix_shell]
-symbol = " "
+# [elixir]
+# symbol = " "
 
-[haskell]
-symbol = " "
+# [elm]
+# symbol = " "
 
-[haxe]
-symbol = "⌘ "
+# [fossil_branch]
+# symbol = " "
 
-[hg_branch]
-symbol = " "
 
-[java]
-symbol = " "
+# [golang]
+# symbol = " "
 
-[julia]
-symbol = " "
+# [guix_shell]
+# symbol = " "
 
-[lua]
-symbol = " "
+# [haskell]
+# symbol = " "
 
-[memory_usage]
-symbol = " "
+# [haxe]
+# symbol = "⌘ "
 
-[meson]
-symbol = "喝 "
+# [hg_branch]
+# symbol = " "
 
-[nim]
-symbol = " "
+# [java]
+# symbol = " "
 
-[nix_shell]
-symbol = " "
+# [julia]
+# symbol = " "
 
-[nodejs]
-symbol = " "
+# [lua]
+# symbol = " "
 
-[os.symbols]
-Alpine = " "
-Amazon = " "
-Android = " "
-Arch = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "﯑ "
-Gentoo = " "
-HardenedBSD = "ﲊ "
-Illumos = " "
-Linux = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-OpenBSD = " "
-openSUSE = " "
-OracleLinux = " "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-Redox = " "
-Solus = "ﴱ "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Windows = " "
+# [memory_usage]
+# symbol = " "
 
-[package]
-symbol = " "
+# [meson]
+# symbol = "喝 "
 
-[pijul_channel]
-symbol = "🪺 "
+# [nim]
+# symbol = " "
 
-[python]
-symbol = " "
+# [nix_shell]
+# symbol = " "
 
-[rlang]
-symbol = "ﳒ "
+# [nodejs]
+# symbol = " "
 
-[ruby]
-symbol = " "
+# [os.symbols]
+# Alpine = " "
+# Amazon = " "
+# Android = " "
+# Arch = " "
+# CentOS = " "
+# Debian = " "
+# DragonFly = " "
+# Emscripten = " "
+# EndeavourOS = " "
+# Fedora = " "
+# FreeBSD = " "
+# Garuda = "﯑ "
+# Gentoo = " "
+# HardenedBSD = "ﲊ "
+# Illumos = " "
+# Linux = " "
+# Macos = " "
+# Manjaro = " "
+# Mariner = " "
+# MidnightBSD = " "
+# Mint = " "
+# NetBSD = " "
+# NixOS = " "
+# OpenBSD = " "
+# openSUSE = " "
+# OracleLinux = " "
+# Pop = " "
+# Raspbian = " "
+# Redhat = " "
+# RedHatEnterprise = " "
+# Redox = " "
+# Solus = "ﴱ "
+# SUSE = " "
+# Ubuntu = " "
+# Unknown = " "
+# Windows = " "
 
-[rust]
-symbol = " "
+# [package]
+# symbol = " "
 
-[scala]
-symbol = " "
+# [pijul_channel]
+# symbol = "🪺 "
 
-[spack]
-symbol = "🅢 "
+# [python]
+# symbol = " "
+
+# [rlang]
+# symbol = "ﳒ "
+
+# [ruby]
+# symbol = " "
+
+# [rust]
+# symbol = " "
+
+# [scala]
+# symbol = " "
+
+# [spack]
+# symbol = "🅢 "

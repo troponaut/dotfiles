@@ -75,7 +75,6 @@ brew "ssh-audit"
 brew "starship"
 brew "stow"
 brew "tealdeer"
-brew "thefuck"
 brew "tig"
 brew "trash"
 brew "tree"
@@ -126,14 +125,14 @@ cask "qlstephen", args: { appdir: "/Applications" }
 cask "quicklook-csv", args: { appdir: "/Applications" }
 cask "quicklook-json", args: { appdir: "/Applications" }
 cask "raindropio"
-cask "raycast"
+cask "raycast", greedy:true
 cask "sonos"
 cask "soundsource"
 cask "spotify"
 cask "suspicious-package"
 cask "todoist"
 cask "utm"
-cask "visual-studio-code"
+cask "visual-studio-code", greedy:true
 cask "warp"
 cask "zoom"
 

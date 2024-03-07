@@ -23,8 +23,8 @@ alias opr="op run --"
 #
 
 use-1password-ssh-agent() {
-  if [ -L "${XDG_CONFIG_HOME}/1password/agent.sock" ]; then
-    export SSH_AUTH_SOCK="${XDG_CONFIG_HOME}/1password/agent.sock"
+  if [ -L "${XDG_CONFIG_HOME}/op/agent.sock" ]; then
+    export SSH_AUTH_SOCK="${XDG_CONFIG_HOME}/op/agent.sock"
   else
     echo "1password ssh agent not found"
     return 1

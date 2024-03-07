@@ -1,0 +1,8 @@
+matches:
+  - trigger: ":newlrp"
+    replace: "{{projectdate}} | "
+    vars:
+      - name: projectdate
+        type: date
+        params:
+          format: "%Y-%m-%d"

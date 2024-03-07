@@ -52,7 +52,7 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 # Use fn + fkey for special behavior, not fkey alone
 defaults write -g com.apple.keyboard.fnState -bool true
 
-# Disable smart quotes
+# Disable  
 defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # Disable smart dashes
@@ -154,15 +154,15 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 61 "{ en
 # sudo nvram StartupMute=%01
 
 # Disable the power chime
-defaults write com.apple.PowerChime ChimeOnAllHardware -bool false
+# defaults write com.apple.PowerChime ChimeOnAllHardware -bool false
 
 # Disable feedback sounds
-defaults write -g com.apple.sound.beep.feedback -bool false
-defaults write -g com.apple.sound.beep.flash -bool false
-defaults write -g com.apple.sound.beep.volume -int 0
+# defaults write -g com.apple.sound.beep.feedback -bool false
+# defaults write -g com.apple.sound.beep.flash -bool false
+# defaults write -g com.apple.sound.beep.volume -int 0
 
 # Disable ui sound effects (empty trash, screen capture, etc.)
-defaults write com.apple.systemsound com.apple.sound.uiaudio.enabled -int 0
+# defaults write com.apple.systemsound com.apple.sound.uiaudio.enabled -int 0
 
 # =============================================================================
 # Menu Bar
@@ -211,7 +211,7 @@ defaults write com.apple.dock minimize-to-application -bool true
 # defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
 # Don't show recent applications
-# defaults write com.apple.dock show-recents -bool false
+defaults write com.apple.dock show-recents -bool false
 
 # Make Dock icons of hidden applications translucent
 # defaults write com.apple.dock showhidden -bool true
@@ -358,11 +358,11 @@ defaults write com.apple.sidebarlists systemitems -dict-add ShowHardDisks -bool 
 # =============================================================================
 
 # Use custom theme for Terminal.app
-TERMINAL_THEME="Zenburn"
-open "${XDG_CONFIG_HOME}/terminal/${TERMINAL_THEME}.terminal"
-sleep 1 # Wait a bit to make sure the theme is loaded
-defaults write com.apple.Terminal "Default Window Settings" -string "${TERMINAL_THEME}"
-defaults write com.apple.Terminal "Startup Window Settings" -string "${TERMINAL_THEME}"
+# TERMINAL_THEME="Zenburn"
+# open "${XDG_CONFIG_HOME}/terminal/${TERMINAL_THEME}.terminal"
+# sleep 1 # Wait a bit to make sure the theme is loaded
+# defaults write com.apple.Terminal "Default Window Settings" -string "${TERMINAL_THEME}"
+# defaults write com.apple.Terminal "Startup Window Settings" -string "${TERMINAL_THEME}"
 
 # =============================================================================
 # Other applications
@@ -372,7 +372,7 @@ defaults write com.apple.Terminal "Startup Window Settings" -string "${TERMINAL_
 # defaults write com.kapeli.dashdoc "syncFolderPath" -string "${XDG_CONFIG_HOME:-$HOME/.config}"
 
 # Hammerspoon
-defaults write org.hammerspoon.Hammerspoon MJConfigFile "$(XDG_CONFIG_HOME)/hammerspoon/init.lua"
+# defaults write org.hammerspoon.Hammerspoon MJConfigFile "$(XDG_CONFIG_HOME)/hammerspoon/init.lua"
 
 # =============================================================================
 # Kill affected applications

@@ -6,7 +6,8 @@
 # General
 #
 
-# Reloads the current alias reload='exec $SHELL -l'
+# Reloads the current
+alias reload='exec $SHELL -l'
 
 # Clear the screen
 alias clr='clear'

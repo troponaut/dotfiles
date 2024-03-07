@@ -27,9 +27,12 @@ COL_LIGHT_YELLOW='\e[0;33m' #yellow
 BOLD='\033[1m'
 REGULAR='\033[0m'
 TICK="[${COL_LIGHT_GREEN}✓${COL_NC}]" # Tick mark
+# shellcheck disable=SC2034
 CROSS="[${COL_LIGHT_RED}✗${COL_NC}]"  # Cross mark000
 INFO="[${COL_LIGHT_YELLOW}i${COL_NC}]"
+# shellcheck disable=SC2034
 DONE="${COL_LIGHT_GREEN} done!${COL_NC}"
+ # shellcheck disable=SC2034
 OVER="\\r\\033[K"
 
 # Override arguments or use
@@ -133,11 +136,13 @@ install_packages() {
   "yum") $sudo_cmd yum install -y "$pkgs" ;;
   "pacman") $sudo_cmd pacman -S "$pkgs" ;;
   "brew")
+   # shellcheck disable=SC1091
     source "${DOTFILES_DIR}/modules/homebrew/.config/profile.d/homebrew.sh"
     # shellcheck disable=SC2086
     brew install $pkgs
     ;;
   "nix")
+  # shellcheck disable=SC1091
     source "${DOTFILES_DIR}/modules/nix/.config/profile.d/nix.sh"
     nix_pkgs=("$pkgs")
     # shellcheck disable=SC2068
@@ -156,7 +161,8 @@ install_brewfile() {
     read -r answer
     case "${answer}" in [yY] | [yY][eE][sS])
       brewfile="${DOTFILES_DIR}/modules/homebrew/.config/homebrew/Brewfile"
-      HOMEBREW_BUNDLE_FILE="$brewfile" brew bundle
+      HOMEBREW_BUNDLE_FILE="$brewfile"
+      brew bundle
       ;;
     esac
   fi
@@ -310,7 +316,7 @@ main() {
   printf "  %b Installing Brefile: ${BOLD}${HOMEBREW_BUNDLE_FILE}${REGULAR} \\n" "${TICK}"
 
   # configure default shell
-  printf  "  %b Setting default shell \\n" "${TICK}"
+  printf "  %b Setting default shell \\n" "${TICK}"
   setup_default_shells
 
   printf "  %b Installing ZSH plugins \\n" "${TICK}"

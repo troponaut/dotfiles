@@ -1,9 +1,3 @@
-[user]
-	name = troponaut
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA23oZSWjfhVinpp4o8M0ysCWi8qxtF+ZXQlDYqJVUT2
-	email = 7839197+troponaut@users.noreply.github.com 
-[github]
-	user = troponaut
 
 [core]
 	excludesfile = ~/.config/git/ignore
@@ -20,8 +14,6 @@
 
 [gpg]
 	format = ssh
-
-
 
 [commit]
 	gpgsign = true
@@ -47,6 +39,7 @@
 
 [color]
 	ui = true
+
 [color "branch"]
 	current = yellow reverse
 	local = yellow
@@ -85,13 +78,13 @@
     navigate = true    # use n and N to move between diff sections
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 
-[include]
-  path = ~/.config/git/aliases
-
 # Include os specific config (defined in macos module)
 [include]
-  path = ~/.config/git/config-macos
+	path = ~/.config/git/gitconfig-macos
+
+[include]
+	path = ~/.config/git/aliases
 
 # Include additional local/private config settings
 [include]
-  path = ~/.config/git/config-local
+	path = ~/.config/git/gitconfig-local

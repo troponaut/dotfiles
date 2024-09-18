@@ -20,7 +20,7 @@ set -eo pipefail
 export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.dotfiles}"
 export DOTFILES_BIN="$DOTFILES_DIR/bin"
 export DOTFILES_DISABLE_SUDO="${DOTFILES_DISABLE_SUDO:-0}"
-export DOTFILES_LOGGING="${DOTFILES_LOGGING:-1}"
+export DOTFILES_LOGGING="${DOTFILES_LOGGING:-0}"
 
 # Source the logging script
 source "$DOTFILES_DIR/lib/logging.sh"
@@ -28,7 +28,6 @@ source "$DOTFILES_DIR/lib/logging.sh"
 clone_dotfiles() {
   
   if [ ! -d "${DOTFILES_DIR}" ]; then
-    echo_log "Cloning dotfiles repo..."
     git clone "https://github.com/troponaut/dotfiles.git" "$DOTFILES_DIR"
 
     # Ensure repo is using the ssh remote
@@ -40,7 +39,6 @@ clone_dotfiles() {
 
 # shellcheck disable=SC2317
 backup_dotfiles() {
-  echo_log "Backing up existing dotfiles"
   # Rename existing dotfiles
   local files=(~/.bash_profile ~/.bashrc ~/.zshenv ~/.zshrc)
 
@@ -53,12 +51,7 @@ backup_dotfiles() {
 }
 
 main() {
-  if [ "$DOTFILES_LOGGING" -eq 1 ]; then
-    echo_log "DOTFILES_LOGGING: $DOTFILES_LOGGING"
-    echo_log "DOTFILES_DIR: $DOTFILES_DIR"
-    echo_log "DOTFILES_DISABLE_SUDO: $DOTFILES_DISABLE_SUDO"
-  fi
-  
+
 
   # Clone and initialize dotfiles env
   clone_dotfiles

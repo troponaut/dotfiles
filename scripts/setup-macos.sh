@@ -10,25 +10,42 @@ prepare_dirs() {
   mkdir -p "${XDG_BIN_HOME}"
 }
 
+
+prompt_for_extra_brewfiles() {
+  local env_vars=("dev" "macos" "vscode")
+  for env_var in "${env_vars[@]}"; do
+    read -p "Do you want to enable HOMEBREW_BUNDLE_INSTALL_${env_var^^}? (y/n): " response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+      export "HOMEBREW_BUNDLE_INSTALL_${env_var^^}=1"
+    else
+      export "HOMEBREW_BUNDLE_INSTALL_${env_var^^}=0"
+    fi
+  done
+}
+
+
 main() {
   local bin_dir="$DOTFILES_BIN"
   local mod_dir="$DOTFILES_MODULES_DIR"
   local default_modules=()
 
-  prepare_dirs
-
   "$mod_dir/homebrew/install.sh"  # Install Homebrew
-  "$mod_dir/1password/install.sh"  # Install 1password LaunchAgent
 
   # shellcheck source=/dev/null
   source "$mod_dir/homebrew/.config/homebrew/shellenv.sh"   # Load Homebrew shellenv
 
+  # Prompt for extra Brewfiles
+  prompt_for_extra_brewfiles
+
   # Install MacOS specific packages
   export HOMEBREW_BUNDLE_FILE="${mod_dir}/homebrew/.config/homebrew/Brewfile"
+
+
   brew bundle --no-lock
 
   # Ensure some directories exist
   mkdir -p "$HOME/.ssh"
+  # prepare_dirs
 
   # Default modules
   default_modules=(
@@ -74,9 +91,11 @@ EOF
 
   # Link dotfiles
   "$bin_dir/dotfiles" modules link
-  # Install dotfiles module scripts - only Docker for now
-  "$mod_dir/docker/install.sh"
 
+  # Install dotfiles module scripts
+  "$mod_dir/1password/install.sh"  # Install 1password LaunchAgent
+  "$mod_dir/docker/install.sh" # Install Docker
+  
   # Setup macos defaults
   "$DOTFILES_DIR/scripts/macos-defaults.sh"
 }

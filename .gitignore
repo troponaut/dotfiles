@@ -13,9 +13,6 @@
 !**/gh/.config/gh/config.yml
 
 
-# iterm2
-**/iterm2/**/AppSupport
-
 # vim / neovim
 .netrwhist
 lazy*.json
@@ -42,6 +39,9 @@ local-*/
 */local
 */local-*
 **/secrets
+
+# Local Brewfiles
+Brewfile.*
 
 # keep these files
 !/**/.gitkeep

@@ -14,14 +14,14 @@ install_macos() {
 
   # Install docker, docker-compose and docker-buildx
   echo "Installing docker ..."
-  brew install docker docker-compose docker-buildx
+  brew install docker docker-compose # docker-buildx
 
   # Setup docker-compose and set buildx as the default docker build engine
   echo "Setting up docker-compose and docker-buildx..."
   mkdir -p ~/.docker/cli-plugins
-  ln -sfn "$(brew --prefix)"/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
+  #ln -sfn "$(brew --prefix)"/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
   ln -sfn "$(brew --prefix)"/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
-  docker buildx install
+  #docker buildx install
 }
 
 main() {

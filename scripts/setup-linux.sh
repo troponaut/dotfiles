@@ -11,7 +11,6 @@ main() {
   "$bin/pkg" \
     stow \
     bash \
-    direnv \
     fzf \
     git \
     neovim \

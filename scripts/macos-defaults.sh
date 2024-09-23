@@ -63,7 +63,7 @@ defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
 
 # Use fn + fkey for special behavior, not fkey alone
-defaults write -g com.apple.keyboard.fnState -bool true
+defaults write -g com.apple.keyboard.fnState -bool false
 
 # =============================================================================
 # Input - Keyboard Shortcuts

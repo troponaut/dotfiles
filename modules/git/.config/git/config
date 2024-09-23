@@ -88,3 +88,4 @@
 # Include additional local/private config settings
 [include]
 	path = ~/.config/git/gitconfig-local
+

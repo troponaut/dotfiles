@@ -20,13 +20,17 @@ $memory_usage\
 $status\
 [ ](fg:prim)\
 $cmd_duration\
+
 $line_break$character
 """
-
 
 add_newline = false
 
 palette = "chevron_glance"
+
+
+[fill]
+symbol = " "
 
 [palettes.chevron_glance]
 prim = '#a7906f' #Primary/Directory Background

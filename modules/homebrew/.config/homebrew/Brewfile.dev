@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+#
+# Only macOS beyond here
+#
+
+print "This is a development Brewfile. It contains packages and tools for development purposes.\n"
+
+# Python Development
+brew "python"	        # Interpreted, interactive, object-oriented programming language
+brew "black"	        # Python code formatter
+brew "ruff"             # Fast Python linter
+
+# Shell Linter and Formatter
+brew "shellcheck"       # Shell script analysis tool
+brew "shfmt"	        # Autoformat shell script source code
+
+# Node JS
+brew "node"             # Node.Js Platform built on V8 to build network applications
+
+# Docker CLI etc
+brew "docker"           # Docker CLI
+brew "docker-compose"   # Define and run multi-container applications
+brew "ctop"	            # Top-like interface for container metrics
+brew "whalebrew"	    # Homebrew, but with Docker images

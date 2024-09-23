@@ -41,7 +41,9 @@ local-*/
 **/secrets
 
 # Local Brewfiles
-Brewfile.*
+Brewfile.macos
+Brewfile.vscode
+Brewfile.lock.json
 
 # keep these files
 !/**/.gitkeep

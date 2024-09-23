@@ -32,7 +32,6 @@ brew "htop"                                   # Improved top (interactive proces
 brew "iperf3"                                 # Update of iperf: measures TCP, UDP, and SCTP bandwidth
 brew "jq"                                     # Lightweight and flexible command-line JSON processor
 brew "neovim"                                 # Ambitious Vim-fork focused on extensibility and agility
-brew "ollama"                                 # Create, run, and share large language models (LLMs)
 brew "prettyping"                             # Wrapper to colorize and simplify ping's output
 brew "procs"                                  # Modern replacement for ps written by Rust
 brew "ripgrep"                                # Search tool like grep and The Silver Searcher

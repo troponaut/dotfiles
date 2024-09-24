@@ -2,7 +2,11 @@
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
-#right_format = """$all"""
+scan_timeout = 30
+add_newline = false
+command_timeout = 1000 
+
+palette = "catppuccin_mocha"
 
 format = """
 [](fg:sec)\
@@ -19,20 +23,24 @@ $git_branch\
 $memory_usage\
 $status\
 [ ](fg:prim)\
+
+
+$fill\
+
+[ ](fg:sec)\
 $cmd_duration\
-
-$line_break$character
+$python\
+$nodejs\
+$docker_context\
+$time\
+[](fg:sec)\
+$line_break$character 
 """
-
-add_newline = false
-
-palette = "chevron_glance"
-
 
 [fill]
 symbol = " "
 
-[palettes.chevron_glance]
+[palettes.catppuccin_mocha]
 prim = '#a7906f' #Primary/Directory Background
 sec = '#3a3a3a' #Accents
 primt = '#3a3a3a' #Primary text color (non-glyphic)
@@ -41,6 +49,10 @@ user = '#274693'
 host = '#FCA17D'
 ip = '#FCA17D'
 duration = '#8a8a8a'
+node= '#71c620'
+python= '#fdc32e'
+docker = '#1848e9'
+
 # Git Colors
 tert = '#3a3a3a' #Tertiary color, mostly used for GitHub text.
 conflicted = 'red'
@@ -135,17 +147,17 @@ disabled = false
 [git_status]
 format = '([$all_status$ahead_behind]($style))[](fg:sec bg:prim)'
 style = 'fg:prim bg:tert'
-conflicted = '[](fg:sec bg:conflicted)[](fg:conflicted bg:sec)'
-ahead = '[](fg:sec bg:ahead)[](fg:ahead bg:sec)'
-behind = '[](fg:sec bg:behind)[](fg:behind bg:behind)'
-diverged = '[](fg:sec bg:ahead)[](fg:ahead bg:sec)'
+conflicted = '[conflict](fg:sec bg:conflicted)[](fg:conflicted bg:sec)'
+ahead = '[ahead](fg:sec bg:ahead)[](fg:ahead bg:sec)'
+behind = '[behind](fg:sec bg:behind)[](fg:behind bg:behind)'
+diverged = '[diverged](fg:sec bg:ahead)[](fg:ahead bg:sec)'
 up_to_date = '[](fg:sec bg:uptodate)[](fg:uptodate bg:sec)'
-untracked = '[](fg:sec bg:untracked)[](fg:untracked bg:sec)'
-stashed = '[](fg:sec bg:stashed)[](fg:stashed bg:sec)'
-modified = '[](fg:sec bg:modified)[](fg:modified bg:sec)'
-staged = '[](fg:sec bg:staged)[](fg:staged bg:sec)'
-renamed = '[](fg:sec bg:renamed)[](fg:renamed bg:sec)'
-deleted = '[](fg:sec bg:deleted)[](fg:deleted bg:sec)'
+untracked = '[untracked](fg:sec bg:untracked)[](fg:untracked bg:sec)'
+stashed = '[stashed](fg:sec bg:stashed)[](fg:stashed bg:sec)'
+modified = '[modified](fg:sec bg:modified)[](fg:modified bg:sec)'
+staged = '[staged](fg:sec bg:staged)[](fg:staged bg:sec)'
+renamed = '[renamed](fg:sec bg:renamed)[](fg:renamed bg:sec)'
+deleted = '[deleted](fg:sec bg:deleted)[](fg:deleted bg:sec)'
 disabled = false
 
 [directory]
@@ -190,9 +202,34 @@ disabled = false
 
 [cmd_duration]
 format = '[󰾨 $duration ]($style)'
-style = 'fg:duration'
-min_time = 500
+style = 'fg:duration bg:sec'
+min_time = 0
 disabled = false
+
+[docker_context]
+symbol = " "
+style = 'fg:#f9f9f9 bg:docker'
+format = '[](fg:docker bg:sec)[[$symbol($context) ]($style)]($style)[](fg:sec bg:docker)'
+
+[python]
+symbol = " "
+disabled =  false
+style = 'fg:#2e6094 bg:python'
+format = '[](fg:python bg:sec)[[$symbol ($version) ]($style)]($style)[](fg:sec bg:python)'
+detect_folders = [".venv", "venv"]
+
+
+[nodejs]
+symbol = ""
+style= 'fg:#262626 bg:node'
+format = '[](fg:node bg:sec)[$symbol $version ]($style)[](fg:sec bg:node)'
+
+[time]
+disabled = false
+style = "fg:prim bg:sec"
+time_format = "%R" # Hour:Minute
+format = '[ $time]($style)'
+
 
 [line_break]
 disabled = false
@@ -205,4 +242,3 @@ vimcmd_symbol = '[ ](bold fg:prim)'
 vimcmd_replace_one_symbol = '[ ](bold fg:purple)'
 vimcmd_replace_symbol = '[ ](bold fg:purple)'
 vimcmd_visual_symbol = '[ ](bold fg:yellow)'
-

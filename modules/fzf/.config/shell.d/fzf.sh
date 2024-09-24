@@ -10,65 +10,52 @@
 FUZZY_FINDER="${FUZZY_FINDER:-fzf}"
 [ "${FUZZY_FINDER}" != "fzf" ] && return 1
 
-# The install directory
-if [ -d "${PROFILE_PREFIX}/opt/fzf" ]; then
-  _FZF_DIR="${PROFILE_PREFIX}/opt/fzf"
-elif [ -d "/usr/local/opt/fzf" ]; then
-  _FZF_DIR="/usr/local/opt/fzf"
-elif [ -d "${XDG_DATA_HOME}/fzf" ]; then
-  _FZF_DIR="${XDG_DATA_HOME}/fzf"
-else
-  return 1
-fi
+# # The install directory
+# if [ -d "${PROFILE_PREFIX}/opt/fzf" ]; then
+#   _FZF_DIR="${PROFILE_PREFIX}/opt/fzf"
+# elif [ -d "/usr/local/opt/fzf" ]; then
+#   _FZF_DIR="/usr/local/opt/fzf"
+# elif [ -d "${XDG_DATA_HOME}/fzf" ]; then
+#   _FZF_DIR="${XDG_DATA_HOME}/fzf"
+# else
+#   return 1
+# fi
 
-# Shell directory
-_SHELL_DIR="${_FZF_DIR}/shell"
+eval "$(fzf --zsh)"
 
-# Current shell
-if [ -n "${BASH_VERSION}" ]; then
-  _SHELL_TYPE="bash"
-elif [ -n "${ZSH_VERSION}" ]; then
-  _SHELL_TYPE="zsh"
-fi
-
-# Completion & keybindings
-if [ -d "$_SHELL_DIR" ]; then
-  source_file "${_SHELL_DIR}/completion.${_SHELL_TYPE}"
-  source_file "${_SHELL_DIR}/key-bindings.${_SHELL_TYPE}"
-fi
 
 # Default options
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --inline-info --preview 'preview {} | head -n 500'"
+export FZF_DEFAULT_OPTS="--height 100% --layout=reverse --inline-info --preview 'preview {} | head -n 500'"
 
 # Use ripgrep
-export FZF_DEFAULT_COMMAND="rg-files"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 
 # Keybindings
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
-export FZF_ALT_C_COMMAND="rg-dirs"
-# export FZF_CTRL_T_OPTS=""
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# Options
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'
+  --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target,bin
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'
+  --preview 'eza --tree --color=always {} | head -200'"
+
+
 # export FZF_CTRL_R_OPTS=""
 
-# Keybindings for zsh
-if [ "${_SHELL_TYPE}" = "zsh" ]; then
-  bindkey -M emacs '^Y' fzf-cd-widget
-  # bindkey -M vicmd '^Y' fzf-cd-widget
-  # bindkey -M viins '^Y' fzf-cd-widget
-fi
-
-# Aliases
-alias fzfm='fzf -m'
-# shellcheck disable=SC2139
-alias fzff="${FZF_DEFAULT_COMMAND} | fzf"
-alias fzfvi='nvim $(fzfi)'
 
 #
 # Completions
 #
 
 # Use ~~ as the trigger sequence instead of the default **
-# export FZF_COMPLETION_TRIGGER='~~'
-export FZF_COMPLETION_TRIGGER='**'
+export FZF_COMPLETION_TRIGGER='~~'
+# export FZF_COMPLETION_TRIGGER='**'
 
 # Completion options for fzf command
 # export FZF_COMPLETION_OPTS=''
@@ -77,12 +64,12 @@ export FZF_COMPLETION_TRIGGER='**'
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
-  rg-files "${1:-.}"
+  fd --hidden --exclude .git . "$1"
 }
 
 # Faster compgen
 _fzf_compgen_dir() {
-  rg-dirs "${1:-.}"
+  fd --type=d --hidden --exclude .git . "$1"
 }
 
 # (EXPERIMENTAL) Advanced customization of fzf options via _fzf_comprun function
@@ -93,14 +80,9 @@ _fzf_comprun() {
   shift
 
   case "$command" in
-    cd) fzf "$@" --preview 'tree -C {} | head -200' ;;
+    cd) fzf "$@" --preview 'eza --tree --color=always {} | head -200' ;;
     export | unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
     ssh) fzf "$@" --preview 'dig {}' ;;
-    *) fzf "$@" ;;
+    *) fzf "$@" --preview 'bat --style=numbers --color=always --line-range :500 {}' ;;
   esac
 }
-
-# Cleanup
-unset _FZF_DIR
-unset _SHELL_DIR
-unset _SHELL_TYPE

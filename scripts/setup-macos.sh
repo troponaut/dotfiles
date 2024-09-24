@@ -67,6 +67,7 @@ main() {
     nodejs
     python
     ripgrep
+    ruff
     rust
     ssh
     starship

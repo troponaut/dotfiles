@@ -2,4 +2,4 @@
 # Initialize eza aliases
 #
 
-alias ls="eza --icons"
+alias ls="eza --icons=always --long --git --color=always"

@@ -56,16 +56,18 @@ docker = '#1848e9'
 # Git Colors
 tert = '#3a3a3a' #Tertiary color, mostly used for GitHub text.
 conflicted = 'red'
+stashed =  '#6b84eb'
+deleted = '#f54caf' #pink
+renamed = '#ce63ff' #lilac
+modified = 'yellow'
+typechanged = 'yellow'
+staged = '#c5e187' #sage
+
+untracked = 'purple'
+diverged = 'blue'
 ahead = 'cyan'
 behind = 'orange'
-diverged = 'blue'
 uptodate = 'green'
-untracked = 'purple'
-stashed =  '#6b84eb' #light blue
-modified = 'yellow'
-staged = '#c5e187' #sage
-renamed = '#ce63ff' #lilac
-deleted = '#f54caf' #pink
 
 [sudo]
 format = '[ ]($style)'
@@ -147,17 +149,18 @@ disabled = false
 [git_status]
 format = '([$all_status$ahead_behind]($style))[](fg:sec bg:prim)'
 style = 'fg:prim bg:tert'
-conflicted = '[conflict](fg:sec bg:conflicted)[](fg:conflicted bg:sec)'
-ahead = '[ahead](fg:sec bg:ahead)[](fg:ahead bg:sec)'
-behind = '[behind](fg:sec bg:behind)[](fg:behind bg:behind)'
-diverged = '[diverged](fg:sec bg:ahead)[](fg:ahead bg:sec)'
+conflicted = '[](fg:sec bg:conflicted)[](fg:conflicted bg:sec)'
+stashed = '[](fg:sec bg:stashed)[](fg:stashed bg:sec)'
+deleted = '[](fg:sec bg:deleted)[](fg:deleted bg:sec)'
+renamed = '[](fg:sec bg:renamed)[](fg:renamed bg:sec)'
+modified = '[](fg:sec bg:modified)[](fg:modified bg:sec)'
+typechanged = '[](fg:sec bg:typechanged)[](fg:typechanged bg:sec)'
+staged = '[](fg:sec bg:staged)[](fg:staged bg:sec)'
+untracked = '[](fg:sec bg:untracked)[](fg:untracked bg:sec)'
+diverged = '[](fg:sec bg:ahead)[](fg:ahead bg:sec)'
+ahead = '[](fg:sec bg:ahead)[](fg:ahead bg:sec)'
+behind = '[](fg:sec bg:behind)[](fg:behind bg:behind)'
 up_to_date = '[](fg:sec bg:uptodate)[](fg:uptodate bg:sec)'
-untracked = '[untracked](fg:sec bg:untracked)[](fg:untracked bg:sec)'
-stashed = '[stashed](fg:sec bg:stashed)[](fg:stashed bg:sec)'
-modified = '[modified](fg:sec bg:modified)[](fg:modified bg:sec)'
-staged = '[staged](fg:sec bg:staged)[](fg:staged bg:sec)'
-renamed = '[renamed](fg:sec bg:renamed)[](fg:renamed bg:sec)'
-deleted = '[deleted](fg:sec bg:deleted)[](fg:deleted bg:sec)'
 disabled = false
 
 [directory]

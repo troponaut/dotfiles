@@ -1,0 +1,44 @@
+# os files
+.DS_Store
+
+# editors
+.vscode
+
+# log files
+*.*log
+
+# github cli
+**/gh/.config/gh/*
+!**/gh/.config/gh/config.yml
+
+# vim / neovim
+.netrwhist
+lazy*.json
+*.local.lua
+
+# zsh
+.zsh/site-functions/*
+.zsh_history
+.zcompdump
+
+# modules file
+.modules*
+
+# deno
+deno.lock
+
+# ignore these directories
+local/
+local*
+local-*/
+*-local/
+/tmp*
+*/local
+*/local-*
+**/secrets
+
+# Local Brewfiles
+Brewfile.*
+
+# keep these files
+!/**/.gitkeep

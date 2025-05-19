@@ -23,12 +23,13 @@ main() {
 
   prepare_dirs
 
+  # -----------------------------------------------------------------------------------------
+
   "$mod_dir/homebrew/install.sh" # Install Homebrew
 
   # shellcheck source=/dev/null
   source "$mod_dir/homebrew/.config/homebrew/shellenv.sh" # Load Homebrew shellenv
 
-  # Install MacOS specific packages
   export HOMEBREW_BUNDLE_FILE="${mod_dir}/homebrew/.config/homebrew/Brewfile"
 
   # Ensure some directories exist
@@ -38,7 +39,6 @@ main() {
   default_modules=(
     _base
     1password
-    ansible
     bash
     bat
     docker
@@ -53,7 +53,6 @@ main() {
     kitty
     local
     macos
-    #neovim
     nodejs
     python
     ripgrep

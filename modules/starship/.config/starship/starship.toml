@@ -4,7 +4,7 @@
 
 scan_timeout = 30
 add_newline = false
-command_timeout = 1000 
+command_timeout = 1000
 
 palette = "catppuccin_mocha"
 
@@ -34,7 +34,7 @@ $nodejs\
 $docker_context\
 $time\
 [](fg:sec)\
-$line_break$character 
+$line_break$character
 """
 
 [fill]
@@ -164,15 +164,15 @@ up_to_date = '[](fg:sec bg:uptodate)[](fg:uptodate bg:sec)'
 disabled = false
 
 [directory]
-format = '[ ]($style)[$read_only](fg:primt bg:prim)[$repo_root]($repo_root_style)[$path](fg:primt bold bg:prim)'
+format = '[$read_only](fg:primt bg:prim)[$repo_root]($repo_root_style)[$path ](fg:primt bold bg:prim)'
 style = 'fg:sec bg:prim'
-home_symbol = ' ~'
+home_symbol = '  ~'
 read_only = '󰉐 '
 #read_only_style = 'fg: bg:'
 truncation_length = 2
 truncation_symbol = '…/'
 truncate_to_repo = true
-repo_root_format = '[  ](fg:sec bg:prim)[$read_only]($read_only_style)[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[ ](bg:prim)'
+repo_root_format = '[  ](fg:sec bg:prim)[$read_only]($read_only_style)[$repo_root]($repo_root_style)[$path]($style)[ ](bg:prim)'
 repo_root_style	= 'fg:sec bold bg:prim'
 use_os_path_sep = true
 disabled = false

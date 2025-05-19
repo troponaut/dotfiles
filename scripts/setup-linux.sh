@@ -23,18 +23,16 @@ main() {
 
   prepare_dirs
 
+  # -----------------------------------------------------------------------------------------
+
+  "$mod_dir/homebrew/install.sh" # Install Homebrew
+
   # Install packages with package manager
-  "$bin_dir/pkg" install \
-    stow \
-    curl \
-    git
+  "$bin_dir/pkg" install /
+  stow
 
   # Ensure some directories exist
   mkdir -p "$HOME/.ssh"
-
-  # Install dotfiles module scripts
-  "$mod_dir/zsh/install.sh"
-  "$mod_dir/starship/install.sh"
 
   # Default modules
   default_modules=(
@@ -47,7 +45,9 @@ main() {
     git
     github
     gpg
+    homebrew
     local
+    linux
     ripgrep
     ssh
     starship

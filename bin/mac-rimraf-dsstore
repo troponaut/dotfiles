@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Summary:
+#   Recursively removes all .DS_Store files on macOS
+#
+# Usage:
+#   mac-rimraf-dsstore # start at current directory
+#   mac-rimraf-dsstore /path
+
+if [[ "$OSTYPE" != darwin* ]]; then
+  echo "Only compatible with macOS"
+  exit 1
+fi
+
+find "${1:-.}" -iname ".DS_Store" -delete

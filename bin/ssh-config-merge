@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# Summary:
+#   Merges ssh config files
+#
+# Usage:
+#   ssh-config-merge
+#
+# Setup:
+#   Add `config-[id]` files to `~/.ssh`
+#     (e.g. config-base, config-personal, etc.)
+#
+# Notes:
+#   Prefer the `Include` directive if using ssh >= v7.3p1
+#
+#   This function can be used to merge various ssh configurations files
+#   together into `~.ssh/config` (since ssh does not have an include file
+#   feature). This can be useful to separate personal and work ssh
+#   configurations.
+
+set -e
+
+# The source directory and target file
+source_dir="${source_dir:-$XDG_CONFIG_HOME/ssh/config.d}"
+target="${target:-$XDG_CONFIG_HOME/ssh/ssh_config_all}"
+
+# Truncate the file
+if [ -f "$target" ]; then
+  echo -ne "Do you want to replace the existing '$target' file [y/N]? "
+  read -r reply
+  if [[ $reply =~ ^[Yy]$ ]]; then
+    cat /dev/null >"$target"
+  else
+    return 1
+  fi
+fi
+
+# Append configs to the ssh_config file
+for conf in "$source_dir"/*; do
+  echo "Appending: $conf"
+  cat "$conf" >>"$target"
+  echo "" >>"$target"
+done
+
+# Update permissions
+chmod 600 "$target"
+
+# Done
+echo "Created: $target"

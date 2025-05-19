@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Summary:
+#   Generate an SSH key
+#
+# Usage:
+#   ssh-keygen
+#   ssh-key-gen {path/to/key}
+
+# Exit if there are any errors
+set -e
+
+# The target directory for the new key
+TARGET_DIR="${1:-$HOME/.ssh}"
+
+# Get the name of the new key
+printf "Key name (default: id_rsa): "
+read -r KEY_NAME
+KEY_NAME="${KEY_NAME:-id_rsa}"
+
+# The path to the new key
+KEY_PATH="${TARGET_DIR}/${KEY_NAME}"
+if [ -e "${KEY_PATH}" ]; then
+  echo "${KEY_PATH} already exists"
+  exit 1
+else
+  mkdir -p "${TARGET_DIR}"
+fi
+
+# Get username or comment
+printf "Username or comment: "
+read -r COMMENT
+[ -n "$COMMENT" ] && COMMENT_ARG="-C ${COMMENT}"
+
+# Generate a new ssh key key
+ssh-keygen -t rsa -b 4096 "${COMMENT_ARG}" -f "${KEY_PATH}"
+echo "Created ${KEY_PATH}"
+
+# Add key to ssh agent
+eval "$(ssh-agent -s)" && ssh-add "${KEY_PATH}"
+
+# Copy public key to clipboard
+if [ "$(command -v pbcopy)" ]; then
+  pbcopy <"${KEY_PATH}.pub"
+  echo "Public key copied to clipboard"
+fi

@@ -1,0 +1,89 @@
+
+[core]
+	excludesfile = ~/.config/git/ignore.gitignore
+	editor = code --wait
+	filemode = false
+	trustctime = false
+	autocrlf = input
+	untrackedCache = true
+	pager = delta
+	ignorecase = false
+
+[credential]
+    helper = ''
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[push]
+	default = simple
+	followTags = true
+
+[fetch]
+	prune = true
+
+[grep]
+	lineNumber = true
+
+[help]
+	autocorrect = 1
+
+[interactive]
+    diffFilter = delta --color-only
+
+[color]
+	ui = true
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[diff-so-fancy]
+	first-run = false
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	side-by-side = true # display diffs side by side
+
+
+[include]
+	path = ~/.config/git/aliases.gitconfig
+
+# Include additional local/private config settings
+[include]
+	path = ~/.config/git/macos.gitconfig
+
+[include]
+	path = ~/.config/git/linux.gitconfig
+
+[include]
+	path = ~/.config/git/local.gitconfig

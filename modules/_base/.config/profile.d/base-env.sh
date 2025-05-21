@@ -7,7 +7,7 @@
 export TERM="xterm-256color"
 
 # Editor
-export EDITOR="vim"
+export EDITOR="nvim"
 export VISUAL="code"
 
 # Colors

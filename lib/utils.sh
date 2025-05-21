@@ -57,14 +57,19 @@ function function_exists() {
 #
 #   prepend_path "/path/abc" "/path/xyz"
 #   # PATH="/path/abc:/path/xyz:/usr/bin:/bin"
-#
 function prepend_path() {
   local i
-  local paths=("$1")
-  for ((i = $#; i > 0; i--)); do
-    arg=${paths[i]}
-    if [ -d "$arg" ] && [[ ":$PATH:" != *":$arg:"* ]]; then
-      PATH="$arg${PATH:+":$PATH"}"
+  local dir
+  for (( i=$#; i>=1; i-- )); do
+    dir="${@:$i:1}" # ${array:offset:length} → POSIX-y in both shells
+    [[ -d $dir ]] || continue
+    if [[ -n ${ZSH_VERSION-} ]]; then
+      path=("$dir" $path) # duplicate check is done by zsh typeset -U path
+    else
+      case ":$PATH:" in
+        *":$dir:"*) ;;
+        *) PATH="$dir:$PATH" ;;
+      esac
     fi
   done
 }
@@ -87,10 +92,66 @@ function append_path() {
   local arg
   for arg in "$@"; do
     if [ -d "$arg" ] && [[ ":$PATH:" != *":$arg:"* ]]; then
+      debug "Appending path: $arg"
       PATH="${PATH:+"$PATH:"}$arg"
     fi
   done
 }
+
+#
+# Prepends a fpath to the fpath variable (avoiding duplicates)
+#
+# usage:
+#   prepend_fpath [fpath_to_prepend]
+#   prepend_fpath [first_fpath] [second_fpath]
+#
+# examples:
+#   prepend_fath "/some/fpath"
+#   # FPATH="/some/fpath:/usr/bin:/bin"
+#
+#   prepend_pfath "/fpath/abc" "/fpath/xyz"
+#   # FPATH="/fpath/abc:/fpath/xyz:/usr/bin:/bin"
+#
+function prepend_fpath() {
+  local i
+  local dir
+  for (( i=$#; i>=1; i-- )); do
+    dir="${@:$i:1}" # ${array:offset:length} → POSIX-y in both shells
+    [[ -d $dir ]] || continue
+    if [[ -n ${ZSH_VERSION-} ]]; then
+      fpath=("$dir" $fpath) # duplicate check is done by zsh typeset -U path
+    else
+      case ":$FPATH:" in
+        *":$dir:"*) ;;
+        *) FPATH="$dir:$FPATH" ;;
+      esac
+    fi
+  done
+}
+
+#
+# Appends fpaths to the fpath variable (avoiding duplicates)
+#
+# usage:
+#   append_fpath [fpath_to_append]
+#   append_fpath [first_fpath] [second_fpath]
+#
+# examples:
+#   append_fpath "/some/fpath"
+#   # FPATH="/usr/bin:/bin:/some/fpath"
+#
+#   append_path "/path/abc" "/path/xyz"
+#   # FPATH="/usr/bin:/bin:/fpath/abc:/fpath/xyz"
+#
+function append_fpath() {
+  local arg
+  for arg in "$@"; do
+    if [ -d "$arg" ] && [[ ":$FPATH:" != *":$arg:"* ]]; then
+      FPATH="${FPATH:+"$FPATH:"}$arg"
+    fi
+  done
+}
+
 
 #
 # Prints the PATH variable with each entry on a new line
@@ -140,7 +201,6 @@ __SOURCED_FILES=()
 source_file() {
   local file=$1
   if [ -f "${file}" ] && [[ ! "${__SOURCED_FILES[*]}" =~ ${file} ]]; then
-    info "loading ${file}"
     source "$file"
     __SOURCED_FILES+=("${file}")
   fi

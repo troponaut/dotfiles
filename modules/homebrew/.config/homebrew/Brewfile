@@ -52,14 +52,6 @@ brew "zsh-completions"                        # Additional completion definition
 brew "zsh-history-substring-search"           # Zsh port of Fish shell's history search
 brew "zsh-syntax-highlighting"                # Fish shell like syntax highlighting for zsh
 
-#
-# Local Brewfile's
-#
-
-# Dir.glob(File.expand_path('~/.config/homebrew/Brewfile.*')).each do |file|
-#   next if file.end_with?('.lock.json')
-#   instance_eval File.read(file) if File.exist?(file)
-# end
 
 if ENV['HOMEBREW_BUNDLE_INSTALL_DEV'] == '1'
   instance_eval File.read(File.expand_path('~/.config/homebrew/Brewfile.dev'))

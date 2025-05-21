@@ -147,7 +147,7 @@ ssh_only = true
 disabled = false
 
 [git_status]
-format = '([$all_status$ahead_behind]($style))[](fg:sec bg:prim)'
+format = '([$all_status$ahead_behind]($style))'
 style = 'fg:prim bg:tert'
 conflicted = '[](fg:sec bg:conflicted)[](fg:conflicted bg:sec)'
 stashed = '[](fg:sec bg:stashed)[](fg:stashed bg:sec)'
@@ -164,9 +164,9 @@ up_to_date = '[](fg:sec bg:uptodate)[](fg:uptodate bg:sec)'
 disabled = false
 
 [directory]
-format = '[$read_only](fg:primt bg:prim)[$repo_root]($repo_root_style)[$path ](fg:primt bold bg:prim)'
+format = '[ ]($style)[$read_only](fg:primt bg:prim)[$repo_root]($repo_root_style)[$path ](fg:primt bold bg:prim)'
 style = 'fg:sec bg:prim'
-home_symbol = '  ~'
+home_symbol = ' ~'
 read_only = '󰉐 '
 #read_only_style = 'fg: bg:'
 truncation_length = 2

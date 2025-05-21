@@ -3,10 +3,6 @@
 # Executes commands at the start of an interactive session
 #
 
-debug "loading ${(%):-%N}"
-# shellcheck disable=SC2296
-info "$(print_path)"
-
 # Enable zprof performance profiling
 [ -n "$PROFILE_STARTUP" ] && zmodload zsh/zprof
 

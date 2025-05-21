@@ -50,10 +50,6 @@ EOF
   manage_1password_mac_launch_agent enable ~/Library/LaunchAgents/com.1password.SSH_AUTH_SOCK.plist
 }
 
-configure_1password_linux_ssh_agent() {
-  # 1password agent is installed in ~/.1password/agent.sock
-
-}
 
 main() {
   case "$("$DOTFILES_BIN"/os-info --family)" in
@@ -61,7 +57,7 @@ main() {
     configure_1password_macos_ssh_agent
     ;;
   "debian")
-    configure_1password_linux_ssh_agent
+    # onfigure_1password_linux_ssh_agent
     ;;
   *) ;;
   esac

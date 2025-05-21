@@ -28,6 +28,5 @@ info() {
   if [ -n "$DOTFILES_TRACE" ]; then
     # Prints message in gray with info emoji
     printf '%s\n' "${GRAY}ℹ️ INFO: $*${RESET}"
-    echo
   fi
 }

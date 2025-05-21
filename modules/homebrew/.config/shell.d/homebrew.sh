@@ -31,7 +31,7 @@ alias brew-uses='brew uses --installed'
 
 # Composite upgrade aliases
 alias brew-upgrade='brew update && brew bundle && brew upgrade --greedy && brew cleanup'
-alias brewupg='brew-upgrade'
+alias brewup='brew-upgrade'
 
 # Brewfile editor function
 # This function allows you to edit the Brewfile or a specific Brewfile.* file.

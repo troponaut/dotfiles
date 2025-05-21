@@ -30,26 +30,12 @@ unsetopt FLOW_CONTROL      # Disable start/stop characters in shell editor.
 # source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 
-#
+#kit
 # Function path for completions
 # - Must be loaded before running compinit
 #
-
-# Homebrew installed completions (/opt/homebrew/share/site-functions)
-if [ -n "${PROFILE_PREFIX}" ] && [ -d "${PROFILE_PREFIX}/share/zsh/site-functions" ]; then
-  fpath=("${PROFILE_PREFIX}/share/zsh/site-functions" $fpath)
-fi
-
-# Homebrew zsh-completions (/opt/homebrew/share/zsh-completions)
-if [ -n "${PROFILE_PREFIX}" ] && [ -d "${PROFILE_PREFIX}/share/zsh-completions" ]; then
-  fpath=("${PROFILE_PREFIX}/share/zsh-completions" $fpath)
-fi
-
-# User completions (~/.local/share/zsh/site-functions)
-mkdir -p "${XDG_DATA_HOME}/zsh/site-functions"
-if [ -d "${XDG_DATA_HOME}/zsh/site-functions" ]; then
-  fpath=("${XDG_DATA_HOME}/zsh/site-functions" $fpath)
-fi
+prepend_fpath "${PROFILE_PREFIX}/share/zsh-completions"     # /opt/homebrew/share/zsh-completions
+prepend_fpath "${XDG_DATA_HOME}/zsh/site-functions"         # /Users/troponaut/.local/share/zsh/site-functions
 
 #
 # Initialize Completion

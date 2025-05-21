@@ -3,6 +3,7 @@
 #
 
 if [ -z "${HOMEBREW_PREFIX}" ]; then
+  debug  "brew shellenv will run now"
   if [[ "$OSTYPE" == darwin* ]]; then
     if [ -d "/opt/homebrew" ]; then
       eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -18,9 +19,11 @@ if [ -z "${HOMEBREW_PREFIX}" ]; then
       eval "$("$HOME"/.linuxbrew/bin/brew shellenv)"
     fi
   fi
+else
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}"
 fi
 
 # Set the profile prefix used by other modules
 if [ -z "$PROFILE_PREFIX" ] && [ "$(command -v brew)" ]; then
-  PROFILE_PREFIX="${HOMEBREW_PREFIX:-$(brew --prefix)}"
+  export PROFILE_PREFIX="${HOMEBREW_PREFIX:-$(brew --prefix)}"
 fi

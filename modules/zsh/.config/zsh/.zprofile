@@ -3,10 +3,6 @@
 # Executes commands at login pre-zshrc
 #
 
-debug "loading ${(%):-%N}"
-# shellcheck disable=SC2296
-info "$(print_path)"
-
 # Completions file
 export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump"
 
@@ -18,3 +14,4 @@ export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump"
 if [ -d "${XDG_CONFIG_HOME}/profile.d" ]; then
   source_files_in "${XDG_CONFIG_HOME}"/profile.d/*
 fi
+

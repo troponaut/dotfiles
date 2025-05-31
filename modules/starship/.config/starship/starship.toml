@@ -169,12 +169,13 @@ style = 'fg:sec bg:prim'
 home_symbol = ' ~'
 read_only = '󰉐 '
 #read_only_style = 'fg: bg:'
-truncation_length = 2
+truncation_length = 4
 truncation_symbol = '…/'
 truncate_to_repo = true
-repo_root_format = '[  ](fg:sec bg:prim)[$read_only]($read_only_style)[$repo_root]($repo_root_style)[$path]($style)[ ](bg:prim)'
+repo_root_format = '[  ](fg:sec bg:prim)[$read_only]($read_only_style)[$repo_root]($repo_root_style)[$path]($style)[ ](bg:prim)'
 repo_root_style	= 'fg:sec bold bg:prim'
 use_os_path_sep = true
+use_logical_path = false
 disabled = false
 
 [directory.substitutions]
@@ -182,7 +183,7 @@ disabled = false
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
-".config" = ". "
+# ".config" = ". "
 ".dotfiles" = ". "
 
 [git_branch]
@@ -194,7 +195,7 @@ symbol = ''
 format = '[](fg:prim bg:sec)[$symbol]($style)[](fg:sec bg:prim)'
 style = 'fg:sudo bg:sec'
 symbol = '  !'
-threshold = 75
+threshold = 85
 disabled = false
 
 [status]
@@ -218,9 +219,9 @@ format = '[](fg:docker bg:sec)[[$symbol($context) ]($style)]($style)[](fg:
 symbol = " "
 disabled =  false
 style = 'fg:#2e6094 bg:python'
-format = '[](fg:python bg:sec)[[$symbol ($version) ]($style)]($style)[](fg:sec bg:python)'
-detect_folders = [".venv", "venv"]
-
+format = '[](fg:python bg:sec)[[$symbol(\(venv\) $version) ]($style)]($style)[](fg:sec bg:python)'
+detect_files=[]
+detect_extensions = []
 
 [nodejs]
 symbol = ""

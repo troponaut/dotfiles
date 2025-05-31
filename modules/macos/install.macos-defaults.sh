@@ -166,13 +166,13 @@ defaults write com.apple.universalaccess reduceTransparency -int 0
 defaults write com.apple.dock tilesize -int 36
 
 # Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool false
+defaults write com.apple.dock autohide -bool true
 
 # Remove the animation when hiding/showing the Dock
-defaults write com.apple.dock autohide-time-modifier -float 0.5
+defaults write com.apple.dock autohide-time-modifier -int 0
 
 # Auto-hiding Dock delay (remove)
-defaults write com.apple.dock autohide-delay -float 0.2
+defaults write com.apple.dock autohide-delay -int 0
 
 # Minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool true

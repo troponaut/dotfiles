@@ -17,4 +17,7 @@
 --smart-case
 
 # Search hidden files
-# --hidden
+--hidden
+
+--heading
+--line-number

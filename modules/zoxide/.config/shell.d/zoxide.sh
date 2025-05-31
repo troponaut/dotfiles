@@ -23,7 +23,7 @@ if [ -n "${BASH_VERSION}" ]; then
 
 # Initialize xodize for zsh
 elif [ -n "${ZSH_VERSION}" ]; then
-  eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh --cmd cd)"
 
 # Fallback to posix initialize
 else

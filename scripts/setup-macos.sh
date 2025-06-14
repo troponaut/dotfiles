@@ -50,7 +50,7 @@ main() {
     github
     gpg
     homebrew
-    kitty
+    ghostty
     local
     macos
     nodejs

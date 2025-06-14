@@ -18,7 +18,7 @@ brew "duf"                                    # Disk Usage/Free Utility - a bett
 brew "dust"                                   # More intuitive version of du in rust
 brew "eza"                                    # Modern, maintained replacement for ls
 brew "fastfetch"                              # neofetch clone written in Rust
-brew "fd"                                     # Simple, fast and user-friendly alternative to find
+brew "fd"                                     # Simple, fast and user-friendly alternative to fidn
 brew "fzf"                                    # Command-line fuzzy finder written in Go
 brew "gh"                                     # GitHub command-line tool
 brew "git"                                    # Distributed revision control system
@@ -52,15 +52,3 @@ brew "zsh-completions"                        # Additional completion definition
 brew "zsh-history-substring-search"           # Zsh port of Fish shell's history search
 brew "zsh-syntax-highlighting"                # Fish shell like syntax highlighting for zsh
 
-
-if ENV['HOMEBREW_BUNDLE_INSTALL_DEV'] == '1'
-  instance_eval File.read(File.expand_path('~/.config/homebrew/Brewfile.dev'))
-end
-
-if ENV['HOMEBREW_BUNDLE_INSTALL_MACOS'] == '1'
-  instance_eval File.read(File.expand_path('~/.config/homebrew/Brewfile.macos'))
-end
-
-if ENV['HOMEBREW_BUNDLE_INSTALL_VSCODE'] == '1'
-  instance_eval File.read(File.expand_path('~/.config/homebrew/Brewfile.vscode'))
-end

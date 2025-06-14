@@ -2,8 +2,8 @@
 # Initialize Homebrew environment
 #
 
-if [ -z "${HOMEBREW_PREFIX}" ]; then
-  debug  "brew shellenv will run now"
+if [ -z "${HOMEBREW_PREFIX}" ]; then 
+ # debug  "brew shellenv will run now"
   if [[ "$OSTYPE" == darwin* ]]; then
     if [ -d "/opt/homebrew" ]; then
       eval "$(/opt/homebrew/bin/brew shellenv)"

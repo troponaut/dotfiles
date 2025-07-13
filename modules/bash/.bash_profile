@@ -44,3 +44,8 @@ if [ -f "${HOME}/.bashrc" ] && [ -z "$BASH_RC_LOADED" ]; then
   source "${HOME}/.bashrc"
   unset BASH_PROFILE_LOADED
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/troponaut/.lmstudio/bin"
+# End of LM Studio CLI section
+

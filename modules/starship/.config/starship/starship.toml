@@ -137,7 +137,7 @@ disabled = false
 [hostname]
 format = '[ ](bg:sec)[@](fg:prim bold bg:sec)[ ](bg:sec)[](fg:sec bg:host)[$ssh_symbol](fg:primt bold bg:host)[ $hostname ](fg:primt bold bg:host)[](fg:host bg:sec)'
 ssh_only = true
-ssh_symbol = ' '
+ssh_symbol = ' 🔑 '
 #trim_at = '.companyname.com'
 disabled = false
 

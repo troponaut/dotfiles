@@ -30,4 +30,7 @@
 #  https://developer.1password.com/docs/ssh/agent/config
 
 [[ssh-keys]]
+vault = "Homelab"
+
+[[ssh-keys]]
 vault = "Private"
